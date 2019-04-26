@@ -1,1 +1,31 @@
 USAGE
+=====
+
+This document outlines the instructions for using the Placien GUI.
+
+APPLYING PLACEHOLDERS
+---------------------
+
+First, select your placeholder bitmap. The placeholders should be as
+tiny as possible, as it will prevent Sapien from running out of memory.
+
+After that, select the directory containing the original bitmaps. All of
+the ".bitmap" files in this directory will be backed up and replaced
+with the selected placeholder bitmap.
+
+You can also specify a filter. This will narrow the list of bitmaps down
+to the ones containing the filter.
+
+For example, specifying "multi" will replace only bitmaps such as
+"cmt\_carbine\_multi.bitmap" and "a30\_burnt\_tree\_multi.bitmap".
+
+RESTORING BITMAPS
+-----------------
+
+When you apply placeholders, Placien creates a text file which lists the
+bitmaps that have been backed up and replaced with the selected
+placeholder.
+
+You can restore the bitmaps by selecting the text file containing the
+list of bitmaps you want to restore. The text file has a random name,
+e.g. "8C5603D0-17E0-4593-895E-BFFFE24B10D1.txt"

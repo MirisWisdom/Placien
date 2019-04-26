@@ -1,1 +1,19 @@
-Placien
+PLACIEN
+=======
+
+Placien is a tool allows you to replace Sapien bitmaps with lightweight
+placeholders.
+
+For pedantry's sake, it's a GUI wrapper around the Placeholder module
+provided by HXE. For a bit of lore, it's the prettier and more robust
+successor to Bbkpify. All Bbkpify features are present here.
+
+Features include:
+
+-   specifying a bitmap to use as a placeholder;
+-   specifying a target directory containing bitmaps;
+-   optionally specifying a filter for bitmaps to handle;
+-   keeping a record of replaced bitmaps to a text file;
+-   specifying the Sapien executable path for easy start-up;
+
+Refer to the USAGE documentation for how to use Placien.

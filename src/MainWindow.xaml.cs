@@ -18,16 +18,113 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-﻿namespace Placien
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
+using static System.Windows.Forms.DialogResult;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
+
+namespace Placien
 {
   /// <summary>
-  /// Interaction logic for MainWindow.xaml
+  ///   Interaction logic for MainWindow.xaml
   /// </summary>
   public partial class MainWindow
   {
+    private readonly Main _main;
+
     public MainWindow()
     {
       InitializeComponent();
+      Version.Content = $"build-{Assembly.GetEntryAssembly().GetName().Version.Major:D4}";
+
+      _main = (Main) DataContext;
+      _main.Load();
+
+      if (!File.Exists(_main.Sapien))
+        SapienButton.Visibility = Visibility.Collapsed;
+    }
+
+    private void BrowsePlaceholder(object sender, RoutedEventArgs e)
+    {
+      var dialog = new OpenFileDialog
+      {
+        Filter = "Sapien bitmap (*.bitmap)|*.bitmap"
+      };
+
+      if (dialog.ShowDialog() == true)
+        _main.Placeholder = dialog.FileName;
+    }
+
+    private void BrowseTarget(object sender, RoutedEventArgs e)
+    {
+      using (var dialog = new FolderBrowserDialog())
+      {
+        if (dialog.ShowDialog() == OK)
+          _main.Directory = dialog.SelectedPath;
+      }
+    }
+
+    private void BrowseRecords(object sender, RoutedEventArgs e)
+    {
+      var dialog = new OpenFileDialog
+      {
+        Filter = "Placien records (*.txt)|*.txt"
+      };
+
+      if (dialog.ShowDialog() == true)
+        _main.Records = dialog.FileName;
+    }
+
+    private void BrowseSapien(object sender, RoutedEventArgs e)
+    {
+      var dialog = new OpenFileDialog
+      {
+        Filter = "Sapien executable (*.exe)|*.exe"
+      };
+
+      if (dialog.ShowDialog() == true)
+        _main.Sapien = dialog.FileName;
+
+      if (File.Exists(_main.Sapien))
+        SapienButton.Visibility = Visibility.Visible;
+    }
+
+    private void Save(object sender, RoutedEventArgs e)
+    {
+      SaveButton.IsEnabled = false;
+      SaveButton.Content   = "Saving...";
+      Task.Run(() => { _main.Save(); });
+      SaveButton.Content   = "Save";
+      SaveButton.IsEnabled = true;
+    }
+
+    private void StartSapien(object sender, RoutedEventArgs e)
+    {
+      _main.StartSapien();
+    }
+
+    private void Binaries(object sender, RoutedEventArgs e)
+    {
+      Process.Start("https://dist.n2.network/placien/");
+    }
+
+    private void Source(object sender, RoutedEventArgs e)
+    {
+      Process.Start("https://cgit.n2.network/placien/");
+    }
+
+    private void ApplyPlaceholder(object sender, RoutedEventArgs e)
+    {
+      Task.Run(() => { _main.Apply(); });
+    }
+
+    private void RestoreBitmaps(object sender, RoutedEventArgs e)
+    {
+      Task.Run(() => { _main.Restore(); });
     }
   }
 }

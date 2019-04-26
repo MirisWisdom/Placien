@@ -25,8 +25,194 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Placien"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Placien"
+        SizeToContent="Height"
+        Width="320"
+        SnapsToDevicePixels="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <local:Main />
+    </Window.DataContext>
+    <StackPanel>
+        <!-- Header -->
+        <Label HorizontalAlignment="Center"
+               FontFamily="Segoe UI Light"
+               FontSize="48"
+               Foreground="#8a80ad">
+            Placien
+        </Label>
+        <Label HorizontalAlignment="Center">
+            Bitmaps replacer for Sapien.
+        </Label>
+
+        <!-- Main -->
+        <StackPanel Margin="25,10,25,0">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Width" Value="80" />
+                </Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Content" Value="📁" />
+                    <Setter Property="DockPanel.Dock" Value="Right" />
+                    <Setter Property="Margin" Value="1,0,0,0" />
+                </Style>
+            </StackPanel.Resources>
+
+            <!-- Apply -->
+            <GroupBox Header="Apply placeholder"
+                      Margin="0,5">
+                <StackPanel>
+                    <!-- Placeholder -->
+                    <DockPanel>
+                        <Label Content="Placeholder:" />
+                        <Button Click="BrowsePlaceholder" />
+                        <TextBox Text="{Binding Placeholder}" />
+                    </DockPanel>
+
+                    <!-- Directory -->
+                    <DockPanel Margin="0,1,0,0">
+                        <Label Content="Target folder:" />
+                        <Button Click="BrowseTarget" />
+                        <TextBox Text="{Binding Directory}" />
+                    </DockPanel>
+
+                    <!-- Filter -->
+                    <DockPanel Margin="0,1,0,0">
+                        <Label Content="Bitmap filter:" />
+                        <TextBox Text="{Binding Filter}" />
+                    </DockPanel>
+
+                    <Button Margin="0,1,0,0"
+                            Height="25"
+                            Click="ApplyPlaceholder">
+                        Apply placeholder
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Restore -->
+            <GroupBox Header="Restore bitmaps"
+                      Margin="0,5">
+                <StackPanel>
+                    <!-- Placeholder -->
+                    <DockPanel>
+                        <Label Content="Records file:" />
+                        <Button Click="BrowseRecords" />
+                        <TextBox Text="{Binding Records}" />
+                    </DockPanel>
+
+                    <Button Margin="0,1,0,0"
+                            Height="25"
+                            Click="RestoreBitmaps">
+                        Restore bitmaps
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Instructions -->
+            <GroupBox Header="Instructions"
+                      Margin="0,5">
+                <ScrollViewer Height="240"
+                              FontFamily="Consolas"
+                              Margin="5">
+                    <TextBlock TextWrapping="WrapWithOverflow">
+                        READ NOW OR FAIL LATER
+                        <LineBreak />
+                        ======================
+                        <LineBreak />
+                        <LineBreak />
+                        This tool allows you to replace Sapien bitmaps with lightweight placeholders.
+                        <LineBreak />
+                        <LineBreak />
+                        APPLYING PLACEHOLDERS
+                        <LineBreak />
+                        ---------------------
+                        <LineBreak />
+                        <LineBreak />
+                        First, select your placeholder bitmap. The placeholders should be as tiny as possible, as it
+                        will prevent Sapien from running out of memory.
+                        <LineBreak />
+                        <LineBreak />
+                        After that, select the directory containing the original bitmaps. All of the ".bitmap" files in
+                        this directory will be backed up and replaced with the selected placeholder bitmap.
+                        <LineBreak />
+                        <LineBreak />
+                        You can also specify a filter. This will narrow the list of bitmaps down to the ones containing
+                        the filter.
+                        <LineBreak />
+                        <LineBreak />
+                        For example, specifying "multi" will replace only bitmaps such as "cmt_carbine_multi.bitmap" and
+                        "a30_burnt_tree_multi.bitmap".
+                        <LineBreak />
+                        <LineBreak />
+                        RESTORING BITMAPS
+                        <LineBreak />
+                        -----------------
+                        <LineBreak />
+                        <LineBreak />
+                        When you apply placeholders, Placien creates a text file which lists the bitmaps that have been
+                        backed up and replaced with the selected placeholder.
+                        <LineBreak />
+                        <LineBreak />
+                        You can restore the bitmaps by selecting the text file containing the list of bitmaps you want
+                        to restore.
+
+                        The text file has a random name, e.g. "8C5603D0-17E0-4593-895E-BFFFE24B10D1.txt"
+                    </TextBlock>
+                </ScrollViewer>
+            </GroupBox>
+
+            <!-- Sapien -->
+            <GroupBox Header="Sapien"
+                      Margin="0,5">
+                <StackPanel>
+                    <DockPanel>
+                        <Label Content="Sapien path:" />
+                        <Button Click="BrowseSapien" />
+                        <TextBox Text="{Binding Sapien}" />
+                    </DockPanel>
+                    <Button Margin="0,1,0,0"
+                            Name="SapienButton"
+                            Click="StartSapien"
+                            Content="Start Sapien" />
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Placien -->
+            <GroupBox Header="Placien"
+                      Margin="0,5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0"
+                            Name="SaveButton"
+                            Click="Save">
+                        Save
+                    </Button>
+
+                    <Button Grid.Column="1"
+                            Click="Binaries">
+                        Binaries
+                    </Button>
+
+                    <Button Grid.Column="2"
+                            Click="Source">
+                        Source
+                    </Button>
+                </Grid>
+            </GroupBox>
+
+            <Label Name="Version"
+                   FontFamily="Consolas"
+                   Foreground="Silver" />
+        </StackPanel>
+    </StackPanel>
 </Window>

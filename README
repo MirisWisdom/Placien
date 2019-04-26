@@ -1,1 +1,24 @@
-Placien
+PLACIEN
+========
+
+Placien is a tool allows you to replace Sapien bitmaps with lightweight placeholders.
+
+For pedantry's sake, it's a GUI wrapper around the Placeholder module provided by HXE. For a bit of lore, it's the prettier and more robust successor to Bbkpify. All Bbkpify features are present here.
+
+APPLYING PLACEHOLDERS
+---------------------
+
+First, select your placeholder bitmap. The placeholders should be as tiny as possible, as it will prevent Sapien from running out of memory.
+
+After that, select the directory containing the original bitmaps. All of the ".bitmap" files in this directory will be backed up and replaced with the selected placeholder bitmap.
+
+You can also specify a filter. This will narrow the list of bitmaps down to the ones containing the filter.
+
+For example, specifying "multi" will replace only bitmaps such as "cmt_carbine_multi.bitmap" and "a30_burnt_tree_multi.bitmap".
+
+RESTORING BITMAPS
+-----------------
+
+When you apply placeholders, Placien creates a text file which lists the bitmaps that have been backed up and replaced with the selected placeholder.
+
+You can restore the bitmaps by selecting the text file containing the list of bitmaps you want to restore. The text file has a random name, e.g. "8C5603D0-17E0-4593-895E-BFFFE24B10D1.txt"

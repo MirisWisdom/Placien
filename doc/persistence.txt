@@ -1,0 +1,15 @@
+PERSISTENCE
+===========
+
+Placien allows its session state to be stored on the filesystem, for subsequent resuming.
+
+The session data includes:
+
+- chosen placeholder
+- chosen directory
+- chosen bitmap
+- sapien path
+
+The state is stored in a 2048 bytes long binary located at:
+
+%APPDATA%\Placien\main.bin

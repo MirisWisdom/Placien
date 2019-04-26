@@ -17,3 +17,13 @@ Features include:
 -   specifying the Sapien executable path for easy start-up;
 
 Refer to the USAGE documentation for how to use Placien.
+
+The source code is officially located at:
+
+    https://cgit.n2.network/placien/
+
+Official binaries for tagged builds are located at:
+
+    https://dist.n2.network/placien/
+
+The GitHub mirror is used for discussing issues or pull requests.

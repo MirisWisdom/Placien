@@ -47,7 +47,7 @@
         </Label>
 
         <!-- Main -->
-        <StackPanel Margin="25,10,25,0">
+        <StackPanel Margin="25,10,25,5">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -120,9 +120,9 @@
                               FontFamily="Consolas"
                               Margin="5">
                     <TextBlock TextWrapping="WrapWithOverflow">
-                        READ NOW OR FAIL LATER
+                        PLACIEN
                         <LineBreak />
-                        ======================
+                        =======
                         <LineBreak />
                         <LineBreak />
                         This tool allows you to replace Sapien bitmaps with lightweight placeholders.

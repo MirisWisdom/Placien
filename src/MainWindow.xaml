@@ -42,7 +42,8 @@
                Foreground="#8a80ad">
             Placien
         </Label>
-        <Label HorizontalAlignment="Center">
+        <Label HorizontalAlignment="Center"
+               Foreground="Gray">
             Bitmaps replacer for Sapien.
         </Label>
 

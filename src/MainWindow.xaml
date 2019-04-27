@@ -113,75 +113,6 @@
                 </StackPanel>
             </GroupBox>
 
-            <!-- Instructions -->
-            <GroupBox Header="Instructions"
-                      Margin="0,5">
-                <ScrollViewer Height="240"
-                              FontFamily="Consolas"
-                              Margin="5">
-                    <TextBlock TextWrapping="WrapWithOverflow">
-                        PLACIEN
-                        <LineBreak />
-                        =======
-                        <LineBreak />
-                        <LineBreak />
-                        This tool allows you to replace Sapien bitmaps with lightweight placeholders.
-                        <LineBreak />
-                        <LineBreak />
-                        APPLYING PLACEHOLDERS
-                        <LineBreak />
-                        ---------------------
-                        <LineBreak />
-                        <LineBreak />
-                        First, select your placeholder bitmap. The placeholders should be as tiny as possible, as it
-                        will prevent Sapien from running out of memory.
-                        <LineBreak />
-                        <LineBreak />
-                        After that, select the directory containing the original bitmaps. All of the ".bitmap" files in
-                        this directory will be backed up and replaced with the selected placeholder bitmap.
-                        <LineBreak />
-                        <LineBreak />
-                        You can also specify a filter. This will narrow the list of bitmaps down to the ones containing
-                        the filter.
-                        <LineBreak />
-                        <LineBreak />
-                        For example, specifying "multi" will replace only bitmaps such as "cmt_carbine_multi.bitmap" and
-                        "a30_burnt_tree_multi.bitmap".
-                        <LineBreak />
-                        <LineBreak />
-                        RESTORING BITMAPS
-                        <LineBreak />
-                        -----------------
-                        <LineBreak />
-                        <LineBreak />
-                        When you apply placeholders, Placien creates a text file which lists the bitmaps that have been
-                        backed up and replaced with the selected placeholder.
-                        <LineBreak />
-                        <LineBreak />
-                        You can restore the bitmaps by selecting the text file containing the list of bitmaps you want
-                        to restore.
-
-                        The text file has a random name, e.g. "8C5603D0-17E0-4593-895E-BFFFE24B10D1.txt"
-                    </TextBlock>
-                </ScrollViewer>
-            </GroupBox>
-
-            <!-- Sapien -->
-            <GroupBox Header="Sapien"
-                      Margin="0,5">
-                <StackPanel>
-                    <DockPanel>
-                        <Label Content="Sapien path:" />
-                        <Button Click="BrowseSapien" />
-                        <TextBox Text="{Binding Sapien}" />
-                    </DockPanel>
-                    <Button Margin="0,1,0,0"
-                            Name="SapienButton"
-                            Click="StartSapien"
-                            Content="Start Sapien" />
-                </StackPanel>
-            </GroupBox>
-
             <!-- Placien -->
             <GroupBox Header="Placien"
                       Margin="0,5">
@@ -208,6 +139,22 @@
                         Source
                     </Button>
                 </Grid>
+            </GroupBox>
+
+            <!-- Sapien -->
+            <GroupBox Header="Sapien"
+                      Margin="0,5">
+                <StackPanel>
+                    <DockPanel>
+                        <Label Content="Sapien path:" />
+                        <Button Click="BrowseSapien" />
+                        <TextBox Text="{Binding Sapien}" />
+                    </DockPanel>
+                    <Button Margin="0,1,0,0"
+                            Name="SapienButton"
+                            Click="StartSapien"
+                            Content="Start Sapien" />
+                </StackPanel>
             </GroupBox>
 
             <Label Name="Version"

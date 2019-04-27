@@ -25,12 +25,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Placien")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Bitmap replacer for Sapien")]
+[assembly: AssemblyDescription("Bitmap replacer for Sapien")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Yu:Miris")]
 [assembly: AssemblyProduct("Placien")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright © 2019 Emilian Roman")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

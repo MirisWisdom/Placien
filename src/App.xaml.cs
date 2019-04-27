@@ -18,10 +18,10 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-﻿namespace Placien
+namespace Placien
 {
   /// <summary>
-  /// Interaction logic for App.xaml
+  ///   Interaction logic for App.xaml
   /// </summary>
   public partial class App
   {

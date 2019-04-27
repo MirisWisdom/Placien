@@ -18,9 +18,7 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 

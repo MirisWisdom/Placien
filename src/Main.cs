@@ -98,6 +98,8 @@ namespace Placien
       }
     }
 
+    public event PropertyChangedEventHandler PropertyChanged;
+
     public void Apply()
     {
       HXE.Placeholder.Commit(Placeholder, Directory, Filter);
@@ -107,8 +109,6 @@ namespace Placien
     {
       HXE.Placeholder.Revert(Records);
     }
-
-    public event PropertyChangedEventHandler PropertyChanged;
 
     public void Save()
     {

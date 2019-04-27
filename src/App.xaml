@@ -25,20 +25,20 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#8a80ad"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#8a80ad" />
+            <Setter Property="Foreground" Value="White" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}" Padding="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#635888"/>
+                    <Setter Property="Background" Value="#635888" />
                 </Trigger>
             </Style.Triggers>
         </Style>

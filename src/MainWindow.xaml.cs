@@ -93,11 +93,13 @@ namespace Placien
         SapienButton.Visibility = Visibility.Visible;
     }
 
-    private void Save(object sender, RoutedEventArgs e)
+    private async void Save(object sender, RoutedEventArgs e)
     {
       SaveButton.IsEnabled = false;
       SaveButton.Content   = "Saving...";
-      Task.Run(() => { _main.Save(); });
+
+      await Task.Run(() => { _main.Save(); });
+
       SaveButton.Content   = "Save";
       SaveButton.IsEnabled = true;
     }

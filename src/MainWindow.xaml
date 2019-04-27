@@ -212,7 +212,11 @@
 
             <Label Name="Version"
                    FontFamily="Consolas"
-                   Foreground="Silver" />
+                   Foreground="Silver">
+                build-0001
+            </Label>
         </StackPanel>
+
+        <local:UpdateUserControl />
     </StackPanel>
 </Window>

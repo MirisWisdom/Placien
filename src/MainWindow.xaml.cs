@@ -121,7 +121,13 @@ namespace Placien
 
     private void ApplyPlaceholder(object sender, RoutedEventArgs e)
     {
+      ApplyPlaceholderButton.IsEnabled = false;
+      ApplyPlaceholderButton.Content   = "Applying...";
+
       Task.Run(() => { _main.Apply(); });
+
+      ApplyPlaceholderButton.IsEnabled = true;
+      ApplyPlaceholderButton.Content   = "Apply placeholder";
     }
 
     private void RestoreBitmaps(object sender, RoutedEventArgs e)

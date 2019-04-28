@@ -89,6 +89,7 @@
 
                     <Button Margin="0,1,0,0"
                             Height="25"
+                            Name="ApplyPlaceholderButton"
                             Click="ApplyPlaceholder">
                         Apply placeholder
                     </Button>

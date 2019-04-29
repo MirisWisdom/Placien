@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Placien"
              mc:Ignorable="d">
     <Button Name="DownloadButton"
-            Click="Download">
+            Click="Download"
+            Background="Crimson">
         Update available. Click to download!
     </Button>
 </UserControl>

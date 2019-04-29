@@ -21,6 +21,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
@@ -108,12 +109,16 @@ namespace Placien
       Process.Start("https://cgit.n2.network/placien/");
     }
 
-    private void ApplyPlaceholder(object sender, RoutedEventArgs e)
+    private async void ApplyPlaceholder(object sender, RoutedEventArgs e)
     {
       ApplyPlaceholderButton.IsEnabled = false;
       ApplyPlaceholderButton.Content   = "Applying...";
 
-      Task.Run(() => { _main.Apply(); });
+      await Task.Run(() => { _main.Apply(); });
+
+      ApplyPlaceholderButton.Content    = "Success!";
+
+      await Task.Run(() => { Thread.Sleep(3000); });
 
       ApplyPlaceholderButton.IsEnabled = true;
       ApplyPlaceholderButton.Content   = "Apply placeholder";

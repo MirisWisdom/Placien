@@ -102,9 +102,9 @@
                 <StackPanel>
                     <!-- Placeholder -->
                     <DockPanel>
-                        <Label Content="Records file:" />
-                        <Button Click="BrowseRecords" />
-                        <TextBox Text="{Binding Records}" />
+                        <Label Content="Directory:" />
+                        <Button Click="BrowseTarget" />
+                        <TextBox Text="{Binding Directory}" />
                     </DockPanel>
 
                     <Button Margin="0,1,0,0"

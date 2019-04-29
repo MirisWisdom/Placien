@@ -13,7 +13,6 @@ Features include:
 -   specifying a bitmap to use as a placeholder;
 -   specifying a target directory containing bitmaps;
 -   optionally specifying a filter for bitmaps to handle;
--   keeping a record of replaced bitmaps to a text file;
 -   specifying the Sapien executable path for easy start-up;
 
 Refer to the USAGE documentation for how to use Placien.

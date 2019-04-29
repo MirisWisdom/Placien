@@ -40,7 +40,6 @@ namespace Placien
     private string _directory   = string.Empty;
     private string _filter      = string.Empty;
     private string _placeholder = string.Empty;
-    private string _records     = string.Empty;
     private string _sapien      = string.Empty;
 
     public string Directory
@@ -76,17 +75,6 @@ namespace Placien
       }
     }
 
-    public string Records
-    {
-      get => _records;
-      set
-      {
-        if (value == _records) return;
-        _records = value;
-        OnPropertyChanged();
-      }
-    }
-
     public string Sapien
     {
       get => _sapien;
@@ -107,7 +95,7 @@ namespace Placien
 
     public void Restore()
     {
-      HXE.Placeholder.Revert(Records);
+      HXE.Placeholder.Revert(Directory);
     }
 
     public void Save()
@@ -124,7 +112,6 @@ namespace Placien
         var placeholder = UTF8.GetBytes(Placeholder);
         var directory   = UTF8.GetBytes(Directory);
         var filter      = UTF8.GetBytes(Filter);
-        var records     = UTF8.GetBytes(Records);
         var sapien      = UTF8.GetBytes(Sapien);
 
         bw.Write(signature);                           /* vanity signature */
@@ -135,8 +122,6 @@ namespace Placien
         bw.Write(new byte[0256 - directory.Length]);   /* padding */
         bw.Write(filter);                              /* filter */
         bw.Write(new byte[0064 - filter.Length]);      /* padding */
-        bw.Write(records);                             /* records */
-        bw.Write(new byte[0256 - records.Length]);     /* padding */
         bw.Write(sapien);                              /* sapien */
         bw.Write(new byte[0256 - sapien.Length]);      /* padding */
         bw.Write(new byte[2048 - ms.Position]);        /* padding */
@@ -161,7 +146,6 @@ namespace Placien
         Placeholder = UTF8.GetString(br.ReadBytes(256)).TrimEnd('\0');
         Directory   = UTF8.GetString(br.ReadBytes(256)).TrimEnd('\0');
         Filter      = UTF8.GetString(br.ReadBytes(064)).TrimEnd('\0');
-        Records     = UTF8.GetString(br.ReadBytes(256)).TrimEnd('\0');
         Sapien      = UTF8.GetString(br.ReadBytes(256)).TrimEnd('\0');
       }
     }

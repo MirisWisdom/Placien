@@ -68,17 +68,6 @@ namespace Placien
       }
     }
 
-    private void BrowseRecords(object sender, RoutedEventArgs e)
-    {
-      var dialog = new OpenFileDialog
-      {
-        Filter = "Placien records (*.txt)|*.txt"
-      };
-
-      if (dialog.ShowDialog() == true)
-        _main.Records = dialog.FileName;
-    }
-
     private void BrowseSapien(object sender, RoutedEventArgs e)
     {
       var dialog = new OpenFileDialog

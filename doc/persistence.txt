@@ -24,5 +24,4 @@ file:
   0x020    Placeholder path   UTF8 string      256
   0x120    Directory path     UTF8 string      256
   0x210    Bitmaps filter     UTF8 string      64
-  0x260    Records path       UTF8 string      256
-  0x360    Sapien path        UTF8 string      256
+  0x260    Sapien path        UTF8 string      256

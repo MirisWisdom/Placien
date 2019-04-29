@@ -22,10 +22,5 @@ For example, specifying "multi" will replace only bitmaps such as
 RESTORING BITMAPS
 -----------------
 
-When you apply placeholders, Placien creates a text file which lists the
-bitmaps that have been backed up and replaced with the selected
-placeholder.
-
-You can restore the bitmaps by selecting the text file containing the
-list of bitmaps you want to restore. The text file has a random name,
-e.g. "8C5603D0-17E0-4593-895E-BFFFE24B10D1.txt"
+All files with the extension ".bitmap.original" in the provided
+directory will be restored to ".bitmap".

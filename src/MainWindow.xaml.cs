@@ -124,9 +124,19 @@ namespace Placien
       ApplyPlaceholderButton.Content   = "Apply placeholder";
     }
 
-    private void RestoreBitmaps(object sender, RoutedEventArgs e)
+    private async void RestoreBitmaps(object sender, RoutedEventArgs e)
     {
+      RestoreBitmapsButton.IsEnabled = false;
+      RestoreBitmapsButton.Content   = "Restoring...";
+      
       Task.Run(() => { _main.Restore(); });
+      
+      RestoreBitmapsButton.Content    = "Success!";
+
+      await Task.Run(() => { Thread.Sleep(3000); });
+
+      RestoreBitmapsButton.IsEnabled = true;
+      RestoreBitmapsButton.Content   = "Restore bitmaps";
     }
   }
 }

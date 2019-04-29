@@ -109,6 +109,7 @@
 
                     <Button Margin="0,1,0,0"
                             Height="25"
+                            Name="RestoreBitmapsButton"
                             Click="RestoreBitmaps">
                         Restore bitmaps
                     </Button>

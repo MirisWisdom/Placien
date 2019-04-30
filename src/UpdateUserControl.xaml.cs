@@ -64,7 +64,7 @@ namespace Placien
 
     private void Download(object sender, RoutedEventArgs e)
     {
-      Process.Start($"https://dist.n2.network/placien/{_version:D4}/bin.zip");
+      Process.Start($"https://dist.n2.network/placien/placien-{_version:D4}.iso");
     }
   }
 }

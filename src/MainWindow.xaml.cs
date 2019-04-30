@@ -116,7 +116,7 @@ namespace Placien
 
       await Task.Run(() => { _main.Apply(); });
 
-      ApplyPlaceholderButton.Content    = "Success!";
+      ApplyPlaceholderButton.Content = "Success!";
 
       await Task.Run(() => { Thread.Sleep(3000); });
 
@@ -128,10 +128,10 @@ namespace Placien
     {
       RestoreBitmapsButton.IsEnabled = false;
       RestoreBitmapsButton.Content   = "Restoring...";
-      
-      Task.Run(() => { _main.Restore(); });
-      
-      RestoreBitmapsButton.Content    = "Success!";
+
+      await Task.Run(() => { _main.Restore(); });
+
+      RestoreBitmapsButton.Content = "Success!";
 
       await Task.Run(() => { Thread.Sleep(3000); });
 

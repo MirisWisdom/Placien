@@ -29,16 +29,20 @@ using static System.IO.Directory;
 using static System.IO.FileAccess;
 using static System.IO.FileMode;
 using static System.IO.Path;
+using static System.IO.SearchOption;
 using static System.Text.Encoding;
 
 namespace Placien
 {
   public class Main : INotifyPropertyChanged
   {
+    private const string Extension = ".original";
+
     private static readonly string File = Combine(GetFolderPath(ApplicationData), "Placien", "main.bin");
 
     private string _directory   = string.Empty;
     private string _filter      = string.Empty;
+    private string _output      = "Welcome!";
     private string _placeholder = string.Empty;
     private string _sapien      = string.Empty;
 
@@ -86,16 +90,73 @@ namespace Placien
       }
     }
 
+    public string Output
+    {
+      get => _output;
+      set
+      {
+        if (value == _output) return;
+        _output = value;
+        OnPropertyChanged();
+      }
+    }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
     public void Apply()
     {
-      HXE.Placeholder.Commit(Placeholder, Directory, Filter);
+      var filter = Filter ?? string.Empty;
+
+      AppendOutput("Gathering...");
+
+      AppendOutput("Placeholder - " + Placeholder);
+      AppendOutput("Directory   - " + Directory);
+      AppendOutput("Filter      - " + filter);
+
+      var files = GetFiles(Directory, $"*{filter}*.bitmap", AllDirectories);
+
+      AppendOutput("Proceeding ...");
+
+      foreach (var bitmap in files)
+      {
+        var filename = GetFileName(bitmap);
+
+        var backup = bitmap + Extension;
+
+        if (System.IO.File.Exists(backup))
+        {
+          AppendOutput("Skipping - " + filename);
+          continue;
+        }
+
+        AppendOutput("Handling - " + filename);
+
+        System.IO.File.Move(bitmap, backup);
+        System.IO.File.Copy(Placeholder, bitmap);
+      }
+
+      AppendOutput("Finished!");
     }
 
     public void Restore()
     {
-      HXE.Placeholder.Revert(Directory);
+      AppendOutput("Gathering ...");
+      var files = GetFiles(Directory, "*.bitmap" + Extension, AllDirectories);
+
+      AppendOutput("Restoring ...");
+
+      foreach (var source in files)
+      {
+        var target = source.Remove(source.Length - Extension.Length, Extension.Length);
+
+        if (System.IO.File.Exists(target))
+          System.IO.File.Delete(target);
+
+        AppendOutput("Restoring - " + GetFileName(target));
+        System.IO.File.Move(source, target);
+      }
+
+      AppendOutput("Finished!");
     }
 
     public void Save()
@@ -153,6 +214,11 @@ namespace Placien
     public void StartSapien()
     {
       Process.Start(Sapien);
+    }
+
+    public void AppendOutput(string value)
+    {
+      Output = value + "\n" + Output;
     }
 
     [NotifyPropertyChangedInvocator]

@@ -33,10 +33,9 @@ namespace Placien
       {
         try
         {
-          var request = (HttpWebRequest) WebRequest.Create(Address + Header);
-          using (var response = (HttpWebResponse) request.GetResponse())
+          using (var response = (HttpWebResponse) WebRequest.Create(Address + Header).GetResponse())
           using (var stream = response.GetResponseStream())
-          using (var reader = new StreamReader(stream ?? throw new Exception("Could not get response stream.")))
+          using (var reader = new StreamReader(stream ?? throw new Exception("Response stream is null.")))
           {
             var serverVersion = int.Parse(reader.ReadLine()?.TrimEnd()
                                           ?? throw new Exception("Could not infer server-side version."));

@@ -15,8 +15,9 @@ namespace Placien
 {
   public partial class UpdateUserControl : UserControl
   {
-    private const string Header  = "HEADER.txt";
-    private const string Address = "https://dist.n2.network/placien/";
+    private string _address;
+
+    private const string Header = "https://dist.n2.network/placien/HEADER.txt";
 
     private int _version;
 
@@ -33,7 +34,7 @@ namespace Placien
       {
         try
         {
-          using (var response = (HttpWebResponse) WebRequest.Create(Address + Header).GetResponse())
+          using (var response = (HttpWebResponse) WebRequest.Create(Header).GetResponse())
           using (var stream = response.GetResponseStream())
           using (var reader = new StreamReader(stream ?? throw new Exception("Response stream is null.")))
           {
@@ -45,6 +46,8 @@ namespace Placien
             if (serverVersion <= clientVersion) return;
 
             _version = serverVersion;
+            _address = reader.ReadLine()?.TrimEnd()
+                       ?? throw new Exception("Could not infer download address.");
           }
         }
         catch (Exception e)
@@ -63,7 +66,7 @@ namespace Placien
 
     private void Download(object sender, RoutedEventArgs e)
     {
-      Process.Start($"https://dist.n2.network/placien/{_version:D4}/bin.zip");
+      Process.Start(_address);
     }
   }
 }

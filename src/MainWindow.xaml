@@ -152,10 +152,22 @@
                         <Button Click="BrowseSapien" />
                         <TextBox Text="{Binding Sapien}" />
                     </DockPanel>
-                    <Button Margin="0,1,0,0"
-                            Name="SapienButton"
-                            Click="StartSapien"
-                            Content="Start Sapien" />
+                    <Grid Margin="0,1,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0"
+                                Margin="0,0,0.5,0"
+                                Name="StartSapienButton"
+                                Click="StartSapien"
+                                Content="Start Sapien" />
+                        <Button Grid.Column="1"
+                                Margin="0.5,0,0,0"
+                                Name="PatchSapienButton"
+                                Click="PatchSapien"
+                                Content="Patch Sapien w/ LAA" />
+                    </Grid>
                 </StackPanel>
             </GroupBox>
 

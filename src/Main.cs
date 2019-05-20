@@ -216,6 +216,16 @@ namespace Placien
       Process.Start(Sapien);
     }
 
+    public void PatchSapien()
+    {
+      using (var fs = new FileStream(Sapien, Open, ReadWrite))
+      using (var bw = new BinaryWriter(fs))
+      {
+        fs.Position = 0x146;   /* an educated guess */
+        bw.Write((byte) 0x2F); /* LAA byte */
+      }
+    }
+
     public void AppendOutput(string value)
     {
       Output = value + "\n" + Output;

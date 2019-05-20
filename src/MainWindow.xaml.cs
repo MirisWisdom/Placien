@@ -18,6 +18,7 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -45,8 +46,10 @@ namespace Placien
       _main = (Main) DataContext;
       _main.Load();
 
-      if (!File.Exists(_main.Sapien))
-        SapienButton.Visibility = Visibility.Collapsed;
+      if (File.Exists(_main.Sapien)) return;
+
+      StartSapienButton.Visibility = Visibility.Collapsed;
+      PatchSapienButton.Visibility = Visibility.Collapsed;
     }
 
     private void BrowsePlaceholder(object sender, RoutedEventArgs e)
@@ -79,8 +82,10 @@ namespace Placien
       if (dialog.ShowDialog() == true)
         _main.Sapien = dialog.FileName;
 
-      if (File.Exists(_main.Sapien))
-        SapienButton.Visibility = Visibility.Visible;
+      if (!File.Exists(_main.Sapien)) return;
+      
+      StartSapienButton.Visibility = Visibility.Visible;
+      PatchSapienButton.Visibility = Visibility.Visible;
     }
 
     private async void Save(object sender, RoutedEventArgs e)
@@ -97,6 +102,16 @@ namespace Placien
     private void StartSapien(object sender, RoutedEventArgs e)
     {
       _main.StartSapien();
+    }
+
+    private async void PatchSapien(object sender, RoutedEventArgs e)
+    {
+      PatchSapienButton.IsEnabled = false;
+      PatchSapienButton.Content   = "Patching...";
+
+      await Task.Run(() => { _main.PatchSapien(); });
+
+      PatchSapienButton.Content = "Success!";
     }
 
     private void Binaries(object sender, RoutedEventArgs e)
